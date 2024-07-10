@@ -28,4 +28,26 @@ function getInitialParams(searchParams) {
   return query;
 }
 
-export { shortenText, searchProducts, categoryProducts, getInitialParams };
+function sumProducts(selectedItems) {
+  const total = selectedItems
+    .reduce(
+      (total, selectedItem) =>
+        total + selectedItem.price * selectedItem.quantity,
+      0
+    )
+    .toFixed(2);
+  const counter = selectedItems.reduce(
+    (counter, selectedItem) => counter + selectedItem.quantity,
+    0
+  );
+
+  return { total, counter };
+}
+
+export {
+  shortenText,
+  searchProducts,
+  categoryProducts,
+  getInitialParams,
+  sumProducts,
+};

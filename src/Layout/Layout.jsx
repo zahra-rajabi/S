@@ -1,9 +1,10 @@
-import React from "react";
-
+import { Link } from "react-router-dom";
 function Layout({ children }) {
   return (
     <>
-      <header className="header">Online Shop</header>
+      <header className="header">
+        <Link to="/products">Online Shop</Link>
+      </header>
       {children}
     </>
   );

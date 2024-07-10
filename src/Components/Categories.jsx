@@ -8,9 +8,9 @@ function Categories({ categoryHandler, query }) {
     { id: 4, type: "Men's Clothing" },
     { id: 5, type: "Women's Clothing" },
   ];
-  console.log(query);
+
   return (
-    <section className="p-3 overflow-hidden border-2 border-black border-dashed rounded-lg">
+    <section className="p-3 overflow-hidden border-2 border-black border-dashed rounded-lg ">
       <h2 className="flex items-center gap-2 mb-4 text-xl font-bold text-ORANGE">
         <TbList className="size-6" />
         <span>Categories</span>

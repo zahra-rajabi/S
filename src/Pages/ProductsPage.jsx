@@ -58,13 +58,15 @@ function ProductsPage() {
       />
 
       <section className="flex justify-between gap-4">
-        <div className="w-[90%] gap-2 flex flex-wrap items-center">
+        <div className="w-[90%] ">
           {!displayed.length && <Loader />}
-          {displayed.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          <section className="flex flex-wrap gap-2 ">
+            {displayed.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </section>
         </div>
-        <div className="w-1/5 ">
+        <div className="w-1/5 h-screen ">
           <Categories categoryHandler={categoryHandler} query={query} />
         </div>
       </section>

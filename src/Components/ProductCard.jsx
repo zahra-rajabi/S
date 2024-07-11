@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { shortenText } from "../helpers/helper";
+import { itemQuantity, shortenText } from "../helpers/helper";
 import { TbListDetails, TbShoppingBagCheck } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoAddSharp, IoRemoveSharp } from "react-icons/io5";
@@ -7,7 +7,8 @@ import { useBasket } from "../services/contexts/BasketContext";
 
 function ProductCard({ product }) {
   const { id, title, price, image } = product;
-  const { dispatch } = useBasket();
+  const { state, dispatch } = useBasket();
+  const quantity = itemQuantity(state, id);
   function clickHandler(value) {
     dispatch({ type: value, payload: product });
   }
@@ -26,23 +27,40 @@ function ProductCard({ product }) {
           <TbListDetails className="icon" />
         </Link>
 
-        <div className="flex">
-          <RiDeleteBin6Line
-            className="icon"
-            onClick={() => clickHandler("REMOVE_ITEM")}
-          />
-          <IoRemoveSharp
-            className="icon"
-            onClick={() => clickHandler("DECREASE")}
-          />
-          <IoAddSharp
-            className="icon"
-            onClick={() => clickHandler("INCREASE")}
-          />
-          <TbShoppingBagCheck
-            className="icon"
-            onClick={() => clickHandler("ADD_ITEM")}
-          />
+        <div className="flex items-center gap-1.5">
+          {quantity === 1 && (
+            <div className="p-1 rounded-lg cursor-pointer bg-ORANGE">
+              <RiDeleteBin6Line
+                className="size-5 text-GRAY"
+                onClick={() => clickHandler("REMOVE_ITEM")}
+              />
+            </div>
+          )}
+          {quantity > 1 && (
+            <div className="p-1 rounded-lg cursor-pointer bg-ORANGE">
+              <IoRemoveSharp
+                className="size-5 text-GRAY"
+                onClick={() => clickHandler("DECREASE")}
+              />
+            </div>
+          )}
+          {quantity > 0 && <span className="font-semibold">{quantity}</span>}
+          {quantity > 0 && (
+            <div className="p-1 rounded-lg cursor-pointer bg-ORANGE">
+              <IoAddSharp
+                className="size-5 text-GRAY"
+                onClick={() => clickHandler("INCREASE")}
+              />
+            </div>
+          )}
+          {quantity === 0 && (
+            <div className="p-1 rounded-lg cursor-pointer bg-ORANGE">
+              <TbShoppingBagCheck
+                className="size-5 text-GRAY"
+                onClick={() => clickHandler("ADD_ITEM")}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

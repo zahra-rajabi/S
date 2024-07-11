@@ -20,7 +20,7 @@ function Categories({ categoryHandler, query }) {
           <li
             className={`${
               query.category === item.type.toLowerCase() &&
-              "bg-ORANGE hover:bg-ORANGE"
+              "bg-ORANGE hover:!bg-ORANGE"
             } cursor-pointer py-1.5 px-2 transition-all duration-200 font-semibold rounded-lg hover:text-BLUE hover:bg-WHITE`}
             key={item.id}
           >

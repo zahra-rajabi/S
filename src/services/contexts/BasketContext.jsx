@@ -23,17 +23,45 @@ const reducer = (state, action) => {
         checkOut: false,
       };
     case "REMOVE_ITEM":
-      state.selectedItems.find((item) => item.id === action.payload.id);
-      return;
+      state.selectedItems = state.selectedItems.filter(
+        (item) => item.id !== action.payload.id
+      );
+      return {
+        ...state,
+        ...sumProducts(state.selectedItems),
+        checkOut: false,
+      };
     case "INCREASE":
-      console.log("add one another to basket");
-      return;
+      let increasedItem = state.selectedItems.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      state.selectedItems[increasedItem].quantity++;
+
+      return {
+        ...state,
+        ...sumProducts(state.selectedItems),
+        checkOut: false,
+      };
     case "DECREASE":
-      console.log("remove somthing from the basket");
-      return;
+      let decreasedItem = state.selectedItems.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      state.selectedItems[decreasedItem].quantity--;
+
+      return {
+        ...state,
+        ...sumProducts(state.selectedItems),
+        checkOut: false,
+      };
     case "CHECKOUT":
-      console.log("checkout");
-      return;
+      return {
+        selectedItems: [],
+        counter: 0,
+        total: 0,
+        checkOut: true,
+      };
     default:
       throw new Error("Invalid Action");
   }
@@ -41,7 +69,6 @@ const reducer = (state, action) => {
 
 function BasketProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, BasketStaus);
-  console.log(state);
   return (
     <BasketContext.Provider value={{ state, dispatch }}>
       {children}

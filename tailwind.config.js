@@ -10,8 +10,21 @@ export default {
         GRAY: "#E5E5E5",
         TEXT_GRAY: "#2e2e2e",
         WHITE: "#FFFFFF",
+        scrollbarGray: "#a0a0a0",
+      },
+      screens: {
+        xsm: "385px",
+        medium: "458px",
+        xmd: "811px",
+        large: "850px",
+        lmd: "595px",
+        average: "500px",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwind-scrollbar")({
+      preferredStrategy: "pseudoelements",
+    }),
+  ],
 };

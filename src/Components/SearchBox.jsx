@@ -8,7 +8,7 @@ function SearchBox({ search, setSearch, searchHandler }) {
 
   return (
     <section className="flex items-center gap-2 mb-8">
-      <div className="px-2 py-1 border-2 border-dashed rounded-lg bg-WHITE border-ORANGE selection:bg-ORANGE selection:text-WHITE">
+      <div className="px-1 py-1 border-2 border-dashed rounded-lg xsm:px-2 bg-WHITE border-ORANGE selection:bg-ORANGE selection:text-WHITE">
         <input
           type="text"
           className="focus:outline-none "

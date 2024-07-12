@@ -60,7 +60,7 @@ function ProductsPage() {
       <section className="flex flex-col-reverse gap-10 md:gap-4 md:justify-between md:flex-row">
         <div className="md:w-[90%] w-full ">
           {!displayed.length && <Loader />}
-          <section className="flex flex-wrap justify-between gap-2 lg:justify-start">
+          <section className="flex flex-wrap gap-2 md:justify-between lg:justify-start">
             {displayed.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

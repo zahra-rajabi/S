@@ -1,6 +1,6 @@
 function shortenText(title) {
   const shortenTitle = title.split(" ").splice(0, 3).join(" ");
-  if (shortenTitle.length > 22) return title.split(" ").splice(0, 2).join(" ");
+  if (shortenTitle.length > 20) return title.split(" ").splice(0, 2).join(" ");
   return shortenTitle;
 }
 

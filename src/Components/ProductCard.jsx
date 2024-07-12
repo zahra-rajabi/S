@@ -11,7 +11,7 @@ function ProductCard({ product }) {
   const quantity = itemQuantity(state, id);
 
   return (
-    <div className="w-full xsm:w-[48%] lmd:w-[32%] lg:w-[24%] border-2  border-dashed border-BLUE rounded-lg bg-WHITE overflow-hidden self-stretch px-2">
+    <div className="w-full  xsm:w-[48%] lmd:w-[32%] lg:w-[24%] border-2  border-dashed border-BLUE rounded-lg bg-WHITE overflow-hidden self-stretch px-2">
       <div className="p-4 mx-auto h-44 w-36">
         <img src={image} alt={title} className="w-full h-full" />
       </div>
@@ -20,7 +20,7 @@ function ProductCard({ product }) {
 
       <h3 className="mb-2 font-medium">{price} $</h3>
 
-      <div className="flex items-center justify-between my-3">
+      <div className="flex items-center justify-between my-3 ">
         <Link to={`/Products/${id}`}>
           <TbListDetails className="icon" />
         </Link>
